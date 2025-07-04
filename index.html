@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FedEx Global Tracking Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --fedex-purple: #4D148C;
+            --fedex-orange: #FF6200;
+            --fedex-white: #FFFFFF;
+            --fedex-light-gray: #f4f4f4;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--fedex-white);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--fedex-purple);
+        }
+
+        /* Header Section */
+        .header {
+            background-color: var(--fedex-purple);
+            color: var(--fedex-white);
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .header-title {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            /* Full-width background image showing airplane, luggage, or airport */
+            background: url('https://images.unsplash.com/photo-1544415286-a70ad9b1f76d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--fedex-white);
+            padding: 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+        }
+
+        .hero-subtext {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .track-button {
+            display: inline-block;
+            background-color: var(--fedex-orange);
+            color: var(--fedex-white);
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .track-button:hover {
+            background-color: #e05700; /* Darker orange on hover */
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: var(--fedex-white);
+        }
+
+        .features h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: var(--fedex-purple);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            background-color: var(--fedex-light-gray);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+        }
+
+        .feature-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: var(--fedex-purple);
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+            font-size: 0.95em;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--fedex-purple);
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--fedex-white);
+        }
+
+        .testimonials h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: var(--fedex-white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--fedex-orange);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .testimonial-card .customer-info {
+            font-weight: 600;
+            font-size: 0.9em;
+            color: var(--fedex-orange);
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: var(--fedex-light-gray);
+            color: var(--text-dark);
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .footer-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--fedex-purple);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2em;
+            }
+
+            .hero-subtext {
+                font-size: 1em;
+            }
+
+            .features h2, .testimonials h2 {
+                font-size: 1.8em;
+            }
+
+            .features-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-item, .testimonial-card {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 1.5em;
+            }
+
+            .hero {
+                height: 400px;
+            }
+
+            .hero-title {
+                font-size: 1.8em;
+            }
+
+            .hero-subtext {
+                font-size: 0.9em;
+            }
+
+            .track-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            .features, .testimonials, .footer {
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-title">FedEx Global Tracking Hub</div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Your Shipment, Tracked Globally</h1>
+            <p class="hero-subtext">View real-time updates on your luggage and deliveries anytime, anywhere.</p>
+            <a href="https://joshlirdz.github.io/fedex-tracker/" class="track-button">Track Your Luggage</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Our Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <img src="https://images.unsplash.com/photo-1542281206-724d2719a4e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=60&h=60&q=80" alt="Global Shipping Icon">
+                <h3>Fast Global Shipping</h3>
+                <p>Delivering your packages across continents with speed and efficiency, ensuring timely arrival.</p>
+            </div>
+            <div class="feature-item">
+                <img src="https://images.unsplash.com/photo-1610427382229-3c72b27a3c3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=60&h=60&q=80" alt="Luggage Tracking Icon">
+                <h3>Luggage Tracking</h3>
+                <p>Keep a close eye on your baggage with our advanced real-time tracking system, for peace of mind.</p>
+            </div>
+            <div class="feature-item">
+                <img src="https://images.unsplash.com/photo-1596558450268-ad2986c7586a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=60&h=60&q=80" alt="Support Icon">
+                <h3>24/7 Support</h3>
+                <p>Our dedicated customer support team is available around the clock to assist you with any queries.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer Profile Sarah J.">
+                <p>"I've used FedEx Global Tracking Hub multiple times and I'm always impressed by their accuracy and speed. Never lost a package!"</p>
+                <div class="customer-info">Sarah J. – New York</div>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer Profile Mark T.">
+                <p>"Tracking my luggage for an international trip was seamless. The real-time updates gave me so much peace of mind. Highly recommend!"</p>
+                <div class="customer-info">Mark T. – London</div>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Customer Profile Emily R.">
+                <p>"Excellent customer service! They quickly resolved an issue I had with a delivery status. A truly reliable service."</p>
+                <div class="customer-info">Emily R. – Sydney</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 FedEx Tracking Hub – Demo site only. Not affiliated with FedEx Corporation.</p>
+        <div class="footer-links">
+            <a href="#">Privacy</a> |
+            <a href="#">Terms</a> |
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+</body>
+</html>
